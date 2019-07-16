@@ -25,15 +25,16 @@ def addTwoNumbers(l1, l2):
         if l2:
             v2 = l2.val
             l2 = l2.next
-        s = v1 + v2
-        val = s % 10 + carry
+        s = v1 + v2 + carry
+        val = s % 10
         carry = s // 10
         output.next = ListNode(val)
         output = output.next
 
     return result.next
 
-l1=InitList([2,4,3])
-l2=InitList([5,6,4])
+l1=InitList([1])
+l2=InitList([9,9])
 k = addTwoNumbers(l1, l2)
 print(k.next.next.val)
+
