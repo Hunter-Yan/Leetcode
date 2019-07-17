@@ -1,0 +1,7 @@
+def reverse(x):
+    sign=(x>0)-(x<0)
+    res=int(str(x*sign)[::-1])
+    return res*sign*(res<2**31)
+
+x=120
+print(reverse(x))
