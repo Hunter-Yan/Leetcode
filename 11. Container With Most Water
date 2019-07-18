@@ -1,0 +1,16 @@
+def maxArea(height):
+    left=0
+    right=len(height)-1
+    width=len(height)-1
+    res=0
+    while width>0:
+        if height[left]<height[right]:
+            res=max(height[left]*width,res)
+            left=left+1
+        else:
+            res=max(height[right]*width,res)
+            right=right-1
+        width=width-1
+    return res
+height=[1,8,6,2,5,4,8,3,7]
+print(maxArea(height))
