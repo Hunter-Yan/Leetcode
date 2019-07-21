@@ -1,0 +1,37 @@
+def fourSum(nums,target):
+    def findNsum(nums, target, N, result, results):
+        if len(nums)<N or N<2:
+            return
+        if N==2:
+            l=0
+            r=len(nums)-1
+            if 2*nums[l]>target or 2*nums[r]<target:
+                return
+            while l<r:
+                sum=nums[l]+nums[r]
+                if sum==target:
+                    results.append(result+[nums[l],nums[r]])
+                    l+=1
+                    r-=1
+                    while l<r and nums[l]==nums[l-1]:
+                        l+=1
+                    while l<r and nums[r]==nums[r+1]:
+                        r-=1
+                if sum<target:
+                    l+=1
+                if sum>target:
+                    r-=1
+        if N>2:
+
+            for i in range(len(nums)-N+1):
+                if N*nums[i]>target or N*nums[-1]<target:
+                    break
+                if i==0 or (i>0 and nums[i]!=nums[i-1]):
+                    findNsum(nums[i + 1:], target - nums[i], N - 1,result+[nums[i]],results)
+    results=[]
+    nums.sort()
+    findNsum(nums,target,4,[],results)
+    return results
+nums=[1, 0, -1, 0, -2, 2]
+target=0
+print(fourSum(nums,target))
