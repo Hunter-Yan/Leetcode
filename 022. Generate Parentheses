@@ -17,5 +17,16 @@ def DFS(l,r,item,res):
         DFS(l-1,r,item+'(',res)
     if r>0:
         DFS(l,r-1,item+')',res)
+print(generateParenthesis(3))
 
+
+#Dynamic Programming
+
+def generateParenthesis(n):
+    dp=[[] for i in range(n+1)]
+    dp[0].append('')
+    for i in range(n+1):
+        for j in range(i):
+            dp[i]+=['('+ x +')'+y for x in dp[j] for y in dp[i-j-1]]
+    return dp[n]
 print(generateParenthesis(3))
