@@ -1,0 +1,21 @@
+#Depth First Search
+
+def generateParenthesis(n):
+    if n==0:
+        return[]
+    res=[]
+    item=''
+    DFS(n,n,item,res)
+    return res
+
+def DFS(l,r,item,res):
+    if r<l:
+        return
+    if l==0 and r==0:
+        return res.append(item)
+    if l>0:
+        DFS(l-1,r,item+'(',res)
+    if r>0:
+        DFS(l,r-1,item+')',res)
+
+print(generateParenthesis(3))
