@@ -10,7 +10,7 @@ def longestPalindrome(s):
     return res
 
 def helper(s, l, r):
-    while a>=0 and b<len(s) and s[l]==s[r]:
+    while l>=0 and r<len(s) and s[l]==s[r]:
         l-=1
         r+=1
 
