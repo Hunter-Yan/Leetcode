@@ -1,0 +1,29 @@
+class ListNode():
+    def __init__(self,x):
+        self.val=x
+        self.next=None
+def InitList(array):
+    res=root=ListNode(0)
+    for i in array:
+        root.next=ListNode(i)
+        root=root.next
+    return res.next
+
+# Iteratively
+def swapPairs(head):
+    dummy=p=ListNode(0)
+    dummy.next=head
+    while head and head.next:
+        temp=head.next
+        head.next=temp.next
+        temp.next=head
+        p.next=temp
+        head=head.next
+        p=temp.next
+    return dummy.next
+
+head=InitList([1,2,3,4])
+l=swapPairs(head)
+print(l.next.next.next.val)
+
+#Recursively
