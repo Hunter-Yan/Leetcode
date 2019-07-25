@@ -27,3 +27,11 @@ l=swapPairs(head)
 print(l.next.next.next.val)
 
 #Recursively
+def swapPairs(head):
+    while head and head.next:
+        temp=head.next
+        head.next=swapPairs(temp.next)
+        temp.next=head
+        return temp
+    return head
+
