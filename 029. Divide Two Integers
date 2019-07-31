@@ -1,0 +1,15 @@
+def divide(dividend, divisor):
+    sign=(dividend<0)==(divisor<0)
+    res=0
+    a=abs(dividend)
+    b=abs(divisor)
+    while a>=b:
+        x = 0
+        while a>b<<x+1:
+            x+=1
+        res+=1<<x
+        a-=b<<x
+    if not sign:
+        res=-res
+    return min(res,2147483647)
+print(divide(7,-3))
