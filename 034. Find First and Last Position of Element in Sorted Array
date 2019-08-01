@@ -1,0 +1,25 @@
+def searchRange(self, nums, target):
+        def searchleft(nums,target):
+            l,r=0,len(nums)-1
+            while l<=r:
+                m=(l+r)//2
+                if nums[m]<target:
+                    l=m+1
+                else:
+                    r=m-1
+            return l
+
+        def searchright(nums,target):
+            l, r = 0, len(nums) - 1
+            while l <= r:
+                m = (l + r) // 2
+                if nums[m] <= target:
+                    l = m + 1
+                else:
+                    r = m - 1
+            return r
+        l,r=searchleft(nums,target),searchright(nums,target)
+        if l<=r:
+            return [l,r]
+        else:
+            return[-1,-1]
