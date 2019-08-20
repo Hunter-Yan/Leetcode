@@ -1,0 +1,19 @@
+def multiply(num1,num2):
+    product=[0]*(len(num1)+len(num2))
+    pos=len(product)-1
+    for n1 in reversed(num1):
+        tempos=pos
+        for n2 in reversed(num2):
+            a=int(n1)*int(n2)
+            product[tempos]+=a
+            product[tempos-1]+=product[tempos]//10
+            product[tempos]%=10
+            tempos-=1
+        pos-=1
+    pt=0
+    while pt<len(product)-1 and product[pt]==0:
+        pt+=1
+    return ''.join(map(str,product[pt:]))
+num1='123'
+num2='456'
+print(multiply(num1,num2))
