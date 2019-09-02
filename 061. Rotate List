@@ -50,3 +50,10 @@ def rotateRight(head, k):
         fastPointer = fastPointer.next
 
     temp = slowPointer.next
+    slowPointer.next = None
+    fastPointer.next = head
+    head = temp
+    return head
+head=InitList([1,2,3,4,5])
+k=2
+print(List(rotateRight(head,k)))
