@@ -1,0 +1,14 @@
+# bad solution
+select e1.Name
+from Employee e1
+where(select count(e2.Id)
+    from Employee e2
+    where e2.ManagerId=e1.Id)>=5;
+
+# good solution
+select e1.Name
+from Employee e1
+where e1.Id in (select e2.ManagerId 
+               from Employee e2
+               group by e2.ManagerId
+               having count(e2.ManagerId)>=5);
