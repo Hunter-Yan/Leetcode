@@ -1,0 +1,5 @@
+select Id, Company, Salary 
+from Employee e1
+where abs( (select count(*) from Employee e2 where e2.Company=e1.Company and e2.Salary>=e1.Salary)-
+          (select count(*) from Employee e3 where e3.Company=e1.Company and e3.Salary<=e1.Salary))<=1
+group by Company, Salary;
