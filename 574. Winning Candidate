@@ -1,0 +1,7 @@
+select c.Name
+from Candidate c
+where c.id=(select v.CandidateId
+               from Vote v
+               group by v.CandidateId
+               order by count(v.CandidateId) desc
+               limit 1);
