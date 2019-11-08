@@ -1,0 +1,5 @@
+select e1.Id, max(e2.Month) as Month, sum(e2.Salary) as Salary
+from Employee e1, Employee e2
+where e1.Id=e2.Id and e2.Month between (e1.Month-3) and (e1.Month-1)
+group by e1.Id, e1.Month
+order by e1.Id, e1.Month desc
